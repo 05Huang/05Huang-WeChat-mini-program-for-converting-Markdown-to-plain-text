@@ -1,0 +1,94 @@
+<view class="container">
+  <view class="header">
+    <text class="title">Markdown转普通文本</text>
+    <view class="help-icon" bindtap="showHelp">?</view>
+  </view>
+
+  <view class="input-section">
+    <view class="input-wrapper">
+      <textarea class="markdown-input" placeholder="请输入Markdown文本" bindinput="onInput" value="{{markdownText}}" maxlength="10000"></textarea>
+      <view class="clear-icon" bindtap="clearInput" wx:if="{{markdownText}}">✕</view>
+    </view>
+    <view class="word-count">{{markdownText.length}}/10000</view>
+  </view>
+  
+  <view class="button-group">
+    <button class="btn-primary" bindtap="convertToPlainText">转换为普通文本</button>
+    <button class="btn-copy" bindtap="copyMarkdown">复制Markdown</button>
+  </view>
+  
+  <view class="result-container" wx:if="{{plainText}}">
+    <view class="result-header">
+      <text class="title">转换结果：</text>
+      <button class="btn-copy-result" bindtap="copyText">复制结果</button>
+    </view>
+    <text class="plain-text" selectable="true">{{plainText}}</text>
+    <text class="feedback-text">如果你觉得这个小程序好用的话，希望给它一个好评，感谢您的支持</text>
+  </view>
+</view>
+
+<!-- 帮助说明弹窗 -->
+<view class="help-modal" wx:if="{{showHelpModal}}" bindtap="hideHelp">
+  <view class="help-content" catchtap="stopPropagation">
+    <view class="help-title">支持的Markdown语法</view>
+    <scroll-view scroll-y class="help-list">
+      <view class="help-item">
+        <text class="syntax"># 标题</text>
+        <text class="desc">支持1-6级标题</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">**粗体**</text>
+        <text class="desc">文字加粗</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">*斜体*</text>
+        <text class="desc">文字斜体</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">***加粗斜体***</text>
+        <text class="desc">文字加粗并斜体</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">~~删除线~~</text>
+        <text class="desc">文字添加删除线</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">&lt;u&gt;下划线&lt;/u&gt;</text>
+        <text class="desc">文字添加下划线</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">==高亮==</text>
+        <text class="desc">文字背景高亮</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">> 引用文字</text>
+        <text class="desc">支持多层引用</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">* 列表项</text>
+        <text class="desc">无序列表（支持*、-、+）</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">1. 列表项</text>
+        <text class="desc">有序列表</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">[链接](URL)</text>
+        <text class="desc">超链接</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">`代码`</text>
+        <text class="desc">行内代码</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">```\n代码块\n```</text>
+        <text class="desc">代码块</text>
+      </view>
+      <view class="help-item">
+        <text class="syntax">---</text>
+        <text class="desc">分隔线（支持---、***、___）</text>
+      </view>
+    </scroll-view>
+    <button class="btn-close" bindtap="hideHelp">关闭</button>
+  </view>
+</view> 

@@ -1,0 +1,18 @@
+page {
+  padding: 20rpx;
+  background: #f6f6f6;
+}
+
+.container {
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: #07c160;
+  color: #fff;
+  border: none;
+  margin: 20rpx 0;
+} 
